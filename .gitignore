@@ -3,3 +3,4 @@
 app.db
 scripts/armarankings*
 .DS_Store
+venv/

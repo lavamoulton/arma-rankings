@@ -2,12 +2,14 @@ from app import db
 from datetime import datetime
 from sqlalchemy.orm import relationship
 
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)   
+
 
 class Match(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -19,6 +21,7 @@ class Match(db.Model):
     def __repr__(self):
         return '<Match {}>'.format(self.id)
 
+
 class Elorating(db.Model): 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), db.ForeignKey('user.username'))
@@ -28,6 +31,7 @@ class Elorating(db.Model):
 
     def __repr__(self):
         return '<EloRating {}>'.format(self.username)
+
 
 class Trueskillrating(db.Model): 
     id = db.Column(db.Integer, primary_key=True)
@@ -42,6 +46,7 @@ class Trueskillrating(db.Model):
     def __repr__(self):
         return '<TrueskillRating {}>'.format(self.username)
 
+
 class MatchScore(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     match_id = db.Column(db.Integer, db.ForeignKey('match.id'))
@@ -51,9 +56,11 @@ class MatchScore(db.Model):
     match = relationship("Match", back_populates="match_scores")
     entry_rating = db.Column(db.Integer)
     exit_rating = db.Column(db.Integer)
+    rounds_played = db.Column(db.Integer)
 
     def __repr__(self):
         return '<MatchScore {}>'.format(self.username)
+
 
 Match.match_scores = relationship("MatchScore", order_by = MatchScore.place, back_populates = "match")
 

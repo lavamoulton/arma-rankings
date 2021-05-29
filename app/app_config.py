@@ -61,10 +61,10 @@ match_types = {
         },
     },
     'archive': {
-        'pickup-fortress1': {
+        'pickup-fortress-1': {
             'header': 'Fort',
             'title': 'Fortress pickup season 1',
-            'match_subtype_id': 'pickup-fortress1',
+            'match_subtype_id': 'pickup-fortress-1',
             'description': 'Pickup fortress! Competitive 6v6 gameplay. Sign up on discord in the #pickup channel!',
             'banner_image': 'fort_bg2.png',
             'text_image': 'fortpickuptext.png',
@@ -90,7 +90,7 @@ match_types = {
 }
 
 match_subtype_to_type = {
-    'pickup-fortress1': 'archive',
+    'pickup-fortress-1': 'archive',
     'sbl-s2': 'leagues',
     'sbl-eu': 'archive',
     'sbl-us': 'archive',

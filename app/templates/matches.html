@@ -28,7 +28,7 @@
             <table class="table table-hover">
                 <caption>
                     <div style="display: inline;">
-                        {{ match.name }} | <span data-toggle="tooltip" data-placement="top" title="Quality score represents how evenly matched teams/players are. Higher score means a closer outcome is expected.">Quality score: {{match.quality}} <span class="glyphicon glyphicon-info-sign"></span></span>
+                        {{ match.name }} | <span data-toggle="tooltip" data-placement="top" title="Quality score represents how evenly matched teams/players are. Higher score means a closer outcome is expected.">Quality: {{match.quality}}% <span class="glyphicon glyphicon-info-sign"></span></span>
                     </div>
                     <div style="display: inline; float: right;padding-right: 1em;">
                         {{ match.date.strftime("%B %d, %Y") }} 
@@ -41,6 +41,8 @@
                 <th class="place">place</th>
                 <th class="entry_rating"><div data-toggle="tooltip" data-placement="top" title="The player's rating entering the match.">entry rating <span class="glyphicon glyphicon-info-sign"></span></div></th>
                 <th class="exit_rating"><div data-toggle="tooltip" data-placement="top" title="The player's rating after the match.">exit rating <span class="glyphicon glyphicon-info-sign"></span></div></th>
+                <th class="rounds_played"><div data-toggle="tooltip" data-placement="top" title="The number of rounds the player participated in.">rounds played <span class="glyphicon glyphicon-info-sign"></span></div></th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -51,6 +53,7 @@
                     <td class="place"> {{ matchscore.place }} </td>
                     <td class="entry_rating"> {{ matchscore.entry_rating }} </td>
                     <td class="exit_rating"> {{ matchscore.exit_rating }} </td>
+                    <td class="rounds_played"> {{ matchscore.rounds_played }} </td>
                 </tr>
                 {% endfor %}
                 </tbody>

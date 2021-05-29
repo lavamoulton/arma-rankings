@@ -37,8 +37,8 @@ def league_rankings():
         .outerjoin(average_score_stmt, Trueskillrating.username==average_score_stmt.c.username)
 
     if (match_type == 'pickup'):
-        # A clause where you need 20 or more matches to show up
-        rankings = rankings.filter(coalesce(matches_won_stmt.c.match_win_count,0) + coalesce(matches_lost_stmt.c.match_lost_count,0) >= 20)
+        # Amount of matches needed to show up in the rankings
+        rankings = rankings.filter(coalesce(matches_won_stmt.c.match_win_count,0) + coalesce(matches_lost_stmt.c.match_lost_count,0) >= 1)
    
     rankings = rankings.order_by(Trueskillrating.rating.desc()).all()
 
@@ -46,7 +46,7 @@ def league_rankings():
         'rankings.html',
         rankings=rankings,
         match_type=match_type,
-        match_subtype= match_types[match_type][match_subtype_id],
+        match_subtype=match_types[match_type][match_subtype_id],
         match_types=match_types,
         year=date.today().year
     )
@@ -86,14 +86,14 @@ def matches():
 
     return render_template(
         'matches.html',
-        matches = matches.items,
-        matchtype = match_subtype_id.replace("-", " ").upper(),
+        matches=matches.items,
+        matchtype=match_subtype_id.replace("-", " ").upper(),
         match_types=match_types,
         year=date.today().year,
         match_subtype=match_types[match_type][match_subtype_id], 
-        prev_url = prev_url, 
-        next_url = next_url,
-        total_matches = total_matches
+        prev_url=prev_url,
+        next_url=next_url,
+        total_matches=total_matches
     )
 
 @app.route('/matches/update')
