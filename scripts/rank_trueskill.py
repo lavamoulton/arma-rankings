@@ -81,7 +81,12 @@ for filename in listdir(directory_to_scan):
                 match_data = Match(
                     name=match['name'],
                     matchtype=match_type,
-                    date=match_date_obj
+                    date=match_date_obj,
+                    kills=match['stats']['match_kills'],
+                    deaths=match['stats']['match_deaths'],
+                    suicides=match['stats']['match_suicides'],
+                    rounds=match['stats']['total_rounds'],
+                    longest_round=match['stats']['longest_round_length'],
                 )
                 db.session.add(match_data)
                 db.session.flush()  # This will give us an ID for the match that has not yet been commited
@@ -120,6 +125,9 @@ for filename in listdir(directory_to_scan):
                                     place=place,
                                     rounds_played=player['rounds_played'],
                                     entry_rating=transformed_rating,
+                                    kills=player['kills'],
+                                    deaths=player['deaths'],
+                                    suicides=player['suicides'],
                                 )
                                 db.session.add(match_score)
                                 match_scores[username] = match_score
@@ -135,7 +143,6 @@ for filename in listdir(directory_to_scan):
                 try:
                     print('TEAM RANKINGS COMBINED : %s \n\n' % str(formatted_match['team_rankings']))
                     print('TEAM WEIGHTS COMBINED : %s \n\n' % str(formatted_match['team_weights']))
-                    # print(env.quality(formatted_match['team_rankings'], weights=formatted_match['team_weights']))
                     print(env.quality(formatted_match['team_rankings'], weights=formatted_match['team_weights']))
                     match_data.quality = round(100*env.quality(formatted_match['team_rankings'], weights=formatted_match['team_weights']), 2)
                 except ValueError:

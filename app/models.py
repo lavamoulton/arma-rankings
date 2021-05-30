@@ -17,6 +17,11 @@ class Match(db.Model):
     matchtype = db.Column(db.String(64))
     date = db.Column(db.Date)
     quality = db.Column(db.Float())
+    kills = db.Column(db.Integer)
+    deaths = db.Column(db.Integer)
+    suicides = db.Column(db.Integer)
+    rounds = db.Column(db.Integer)
+    longest_round = db.Column(db.String(10))
 
     def __repr__(self):
         return '<Match {}>'.format(self.id)
@@ -57,6 +62,9 @@ class MatchScore(db.Model):
     entry_rating = db.Column(db.Integer)
     exit_rating = db.Column(db.Integer)
     rounds_played = db.Column(db.Integer)
+    kills = db.Column(db.Integer)
+    deaths = db.Column(db.Integer)
+    suicides = db.Column(db.Integer)
 
     def __repr__(self):
         return '<MatchScore {}>'.format(self.username)

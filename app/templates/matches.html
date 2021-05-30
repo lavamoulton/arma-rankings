@@ -33,16 +33,41 @@
                     <div style="display: inline; float: right;padding-right: 1em;">
                         {{ match.date.strftime("%B %d, %Y") }} 
                     </div>
+                    <div style=""
                 </caption>
                 <thead>
                 <tr>
-                <th class="player">player</th>
-                <th class="score"><div data-toggle="tooltip" data-placement="top" title="The player's points in a match. -1 indicates that the player left before the match officially ended, so it's harder to get their score.">score <span class="glyphicon glyphicon-info-sign"></span></div></th>
-                <th class="place">place</th>
-                <th class="entry_rating"><div data-toggle="tooltip" data-placement="top" title="The player's rating entering the match.">entry rating <span class="glyphicon glyphicon-info-sign"></span></div></th>
-                <th class="exit_rating"><div data-toggle="tooltip" data-placement="top" title="The player's rating after the match.">exit rating <span class="glyphicon glyphicon-info-sign"></span></div></th>
-                <th class="rounds_played"><div data-toggle="tooltip" data-placement="top" title="The number of rounds the player participated in.">rounds played <span class="glyphicon glyphicon-info-sign"></span></div></th>
-
+                    <th class="match-stats">match stats</th>
+                    <th class="total-rounds">rounds</th>
+                    <th class="match-kills">kills</th>
+                    <th class="match-deaths">deaths</th>
+                    <th class="match-suicides">suicides</th>
+                    <th class="longest-round">longest round</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td class="total-rounds"> {{ match.rounds }} </td>
+                    <td class="match-kills"> {{ match.kills }} </td>
+                    <td class="match-deaths"> {{ match.deaths }} </td>
+                    <td class="match-suicides"> {{ match.suicides }} </td>
+                    <td class="longest-round"> {{ match.longest_round }} </td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th class="player">player</th>
+                    <th class="score"><div data-toggle="tooltip" data-placement="top" title="The player's points in a match. -1 indicates that the player left before the match officially ended, so it's harder to get their score.">score <span class="glyphicon glyphicon-info-sign"></span></div></th>
+                    <th class="place">place</th>
+                    <th class="entry_rating"><div data-toggle="tooltip" data-placement="top" title="The player's rating entering the match.">entry rating <span class="glyphicon glyphicon-info-sign"></span></div></th>
+                    <th class="exit_rating"><div data-toggle="tooltip" data-placement="top" title="The player's rating after the match.">exit rating <span class="glyphicon glyphicon-info-sign"></span></div></th>
+                    <th class="kills">kills</th>
+                    <th class="deaths">deaths</th>
+                    <th class="suicides">suicides</th>
+                    <th class="rounds_played"><div data-toggle="tooltip" data-placement="top" title="The number of rounds the player participated in.">rounds played <span class="glyphicon glyphicon-info-sign"></span></div></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -53,6 +78,9 @@
                     <td class="place"> {{ matchscore.place }} </td>
                     <td class="entry_rating"> {{ matchscore.entry_rating }} </td>
                     <td class="exit_rating"> {{ matchscore.exit_rating }} </td>
+                    <td class="kills"> {{ matchscore.kills }} </td>
+                    <td class="deaths"> {{ matchscore.deaths }} </td>
+                    <td class="suicides"> {{ matchscore.suicides }} </td>
                     <td class="rounds_played"> {{ matchscore.rounds_played }} </td>
                 </tr>
                 {% endfor %}
